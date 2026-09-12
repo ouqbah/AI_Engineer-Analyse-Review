@@ -4,6 +4,7 @@ import { ReviewsInput } from "./components/ReviewsInput";
 import { ResultsTable } from "./components/ResultsTable";
 import { SummaryMetrics } from "./components/SummaryMetrics";
 import { HistoryExpander } from "./components/HistoryExpander";
+import { ThemeToggle } from "./components/ThemeToggle";
 
 const SAMPLE_REVIEWS = [
   "The food was delicious but the delivery took over an hour. Not happy.",
@@ -13,6 +14,15 @@ const SAMPLE_REVIEWS = [
 ];
 
 export default function App() {
+  const [theme, setTheme] = useState<"light" | "dark">(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("customer_feedback_theme");
+      if (saved === "dark" || saved === "light") return saved;
+      return window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    return "light";
+  });
+
   const [reviewsText, setReviewsText] = useState<string>("");
   const [results, setResults] = useState<AnalysisItem[]>([]);
   const [isAnalyzing, setIsAnalyzing] = useState<boolean>(false);
@@ -22,6 +32,21 @@ export default function App() {
   const [isLoadingHistory, setIsLoadingHistory] = useState<boolean>(false);
   const [isSaving, setIsSaving] = useState<boolean>(false);
   const [saveSuccessMessage, setSaveSuccessMessage] = useState<string | null>(null);
+
+  // Sync theme with document class and localStorage
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+    localStorage.setItem("customer_feedback_theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
 
   // Load history on mount
   useEffect(() => {
@@ -142,22 +167,27 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-10 px-4 sm:px-6 lg:px-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-slate-950 text-gray-900 dark:text-slate-100 py-10 px-4 sm:px-6 lg:px-8 transition-colors duration-200">
       <div className="max-w-4xl mx-auto">
-        {/* Streamlit Title & Subtitle */}
-        <div className="mb-6">
-          <h1 className="text-3xl font-extrabold text-gray-900 flex items-center gap-2">
-            <span>📝</span>
-            <span>Customer Feedback Analyzer</span>
-          </h1>
-          <p className="mt-2 text-gray-600 text-sm">
-            Paste your customer reviews below, one review per line.
-          </p>
+        {/* Top Header Bar with Title & Theme Toggle */}
+        <div className="mb-6 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+          <div>
+            <h1 className="text-3xl font-extrabold text-gray-900 dark:text-white flex items-center gap-2">
+              <span>📝</span>
+              <span>Customer Feedback Analyzer</span>
+            </h1>
+            <p className="mt-2 text-gray-600 dark:text-slate-400 text-sm">
+              Paste your customer reviews below, one review per line.
+            </p>
+          </div>
+          <div className="self-start sm:self-auto">
+            <ThemeToggle theme={theme} onToggleTheme={toggleTheme} />
+          </div>
         </div>
 
         {/* Warning message if user clicks Analyze with empty text */}
         {warningMessage && (
-          <div className="mb-4 bg-amber-50 border border-amber-300 text-amber-900 px-4 py-3 rounded-md text-sm flex items-center justify-between">
+          <div className="mb-4 bg-amber-50 dark:bg-amber-950/50 border border-amber-300 dark:border-amber-800 text-amber-900 dark:text-amber-200 px-4 py-3 rounded-md text-sm flex items-center justify-between">
             <span className="flex items-center gap-2">
               <span>⚠️</span>
               <span>{warningMessage}</span>
@@ -165,7 +195,7 @@ export default function App() {
             <button
               type="button"
               onClick={() => setWarningMessage(null)}
-              className="text-amber-800 hover:text-amber-950 font-bold ml-2"
+              className="text-amber-800 dark:text-amber-300 hover:text-amber-950 dark:hover:text-amber-100 font-bold ml-2 cursor-pointer"
             >
               ×
             </button>
