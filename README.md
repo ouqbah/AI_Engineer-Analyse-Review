@@ -1,9 +1,10 @@
 # 📝 Customer Feedback Analyzer
 
-[![Google AI Studio](https://img.shields.io/badge/Google%20AI%20Studio-Applet%20Preview-4285F4?logo=google&logoColor=white)](https://ais-pre-4mqqb2kbfwtdlzm3qk2bj2-77028982029.us-east1.run.app)
+[![Google AI Studio](https://img.shields.io/badge/Google%20AI%20Studio-Live%20Development%20App-4285F4?logo=google&logoColor=white)](https://ais-dev-4mqqb2kbfwtdlzm3qk2bj2-77028982029.us-east1.run.app)
 [![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github&logoColor=white)](https://github.com/ouqbah/AI_Engineer)
 
-> 🌐 **Google AI Studio Applet URL**: [https://ais-pre-4mqqb2kbfwtdlzm3qk2bj2-77028982029.us-east1.run.app](https://ais-pre-4mqqb2kbfwtdlzm3qk2bj2-77028982029.us-east1.run.app)  
+> 🚀 **Live App URL (Development)**: [https://ais-dev-4mqqb2kbfwtdlzm3qk2bj2-77028982029.us-east1.run.app](https://ais-dev-4mqqb2kbfwtdlzm3qk2bj2-77028982029.us-east1.run.app)  
+> 🔗 **Shared / Preview URL**: [https://ais-pre-4mqqb2kbfwtdlzm3qk2bj2-77028982029.us-east1.run.app](https://ais-pre-4mqqb2kbfwtdlzm3qk2bj2-77028982029.us-east1.run.app) *(Activated when you click the "Share" button in the Google AI Studio top bar)*  
 > 💻 **GitHub Repository**: [https://github.com/ouqbah/AI_Engineer](https://github.com/ouqbah/AI_Engineer)
 
 A full-stack, AI-powered customer feedback analysis application built with **Google GenAI SDK (Gemini)**, **Express / Node.js**, and **React**.
