@@ -1,6 +1,12 @@
 # 📝 Customer Feedback Analyzer
 
-A full-stack, AI-powered customer feedback analysis application built with **FastAPI**, **Streamlit**, **Google GenAI SDK (Gemini 2.5 Flash)**, and **SQLite**. 
+[![Google AI Studio](https://img.shields.io/badge/Google%20AI%20Studio-Applet%20Preview-4285F4?logo=google&logoColor=white)](https://ais-pre-4mqqb2kbfwtdlzm3qk2bj2-77028982029.us-east1.run.app)
+[![GitHub](https://img.shields.io/badge/GitHub-Repository-181717?logo=github&logoColor=white)](https://github.com/ouqbah/AI_Engineer)
+
+> 🌐 **Google AI Studio Applet URL**: [https://ais-pre-4mqqb2kbfwtdlzm3qk2bj2-77028982029.us-east1.run.app](https://ais-pre-4mqqb2kbfwtdlzm3qk2bj2-77028982029.us-east1.run.app)  
+> 💻 **GitHub Repository**: [https://github.com/ouqbah/AI_Engineer](https://github.com/ouqbah/AI_Engineer)
+
+A full-stack, AI-powered customer feedback analysis application built with **Google GenAI SDK (Gemini)**, **Express / Node.js**, and **React**.
 
 This system processes batch customer reviews, uses structured output generation from Gemini to extract sentiment, ratings, and primary themes, and provides an interactive business intelligence dashboard with persistent historical storage.
 
